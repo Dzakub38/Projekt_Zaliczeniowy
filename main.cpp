@@ -1,6 +1,6 @@
 //4.Program prezentujący klasę Ułamek. Operacje na liczbach całkowitych. (Wykonać operacje pokazujące poprawność działań.)
 //program został rozszerzony o różne typ Liczba, pozwala na wykonywanie działań takich jak +,-,*,/ na ułamkach i liczbach zmiennoprzecinkowych (obliczone analitycznie i sprawdzenie)
-// oraz na potęgowanie i pierwiastkowanie liczb oraz ułamków
+// oraz na potęgowanie i pierwiastkowanie liczb oraz ułamków, ograniczenie do wyników rzeczywistych
 
 
 #include <iostream>
