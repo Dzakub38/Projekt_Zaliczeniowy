@@ -24,13 +24,16 @@ public:
 //klasa pochodna Ułamek
 class Ulamek : public Skladnik {
 protected:
-  int licznik;
-  int mianownik;
+
+//uwagam, zezwalam na typ double ze względu na pierwiastkowanie ułamka, nie chcę by program starcił na fukcjonalności (np. 5/7 pod pierwiastkiem 2 stopnia)
+//przy wprowadzaniu licznika i mianownika ułamka przez uzytkownika, sprawdzam czy wprowadzone liczby są int, założenia autora
+  double licznik;
+  double mianownik;
   double wartosc;
 
 public:
 //konstruktor parametryczny 
-  Ulamek(int l, int m) : licznik(l), mianownik(m) {
+  Ulamek(double l, double m) : licznik(l), mianownik(m) {
     if (mianownik == 0) {
       std::cerr << "Blad: Mianownik nie moze byc rowny 0." << std::endl;
       exit(1);
@@ -335,15 +338,15 @@ public:
             //jeżeli ułamek jest ujemny, a stopień pierwiastka nieparzysty, wyliczam
             else if (ulamek1->getLicznik()*ulamek1->getMianownik() < 0 && a%2==1 && stopien > 0)
             {
-                int nowyLicznik = - static_cast<int>(std::pow(abs(ulamek1->getLicznik()), 1.0 / stopien));
-                int nowyMianownik = static_cast<int>(std::pow(abs(ulamek1->getMianownik()), 1.0 / stopien));
+                double nowyLicznik = - static_cast<double>(std::pow(abs(ulamek1->getLicznik()), 1.0 / stopien));
+                double nowyMianownik = static_cast<double>(std::pow(abs(ulamek1->getMianownik()), 1.0 / stopien));
                 return new Ulamek(nowyLicznik, nowyMianownik);
                 
             } 
             //jeżeli pierwiastek jest dodatni, wyliczam
             else {
-            int nowyLicznik = static_cast<int>(std::pow(abs(ulamek1->getLicznik()), 1.0 / stopien));
-            int nowyMianownik = static_cast<int>(std::pow(abs(ulamek1->getMianownik()), 1.0 / stopien));
+            double nowyLicznik = static_cast<double>(std::pow(abs(ulamek1->getLicznik()), 1.0 / stopien));
+            double nowyMianownik = static_cast<double>(std::pow(abs(ulamek1->getMianownik()), 1.0 / stopien));
             return new Ulamek(nowyLicznik, nowyMianownik);
             }
         } else {
@@ -369,19 +372,16 @@ public:
             {
                 std::cerr << "Blad: Nieprawidłowy stopień." << std::endl;
                 exit(1);
-                
             }
             //jeżeli liczba jest ujemna, a stopień pierwiastka nieparzysty, wyliczam        
             if (dynamic_cast<const Liczba*>(&arg1)->getWartosc() < 0 && b%2==1)
             {
                 return new Liczba(-static_cast<double>(std::pow(abs(dynamic_cast<const Liczba*>(&arg1)->getWartosc()), 1.0 / stopien)));
-                
             }
             //jeżeli liczba jest dodatnia, a stopień całkowity, dodatni, wyliczam
             else 
             {
                 return new Liczba(static_cast<double>(std::pow(dynamic_cast<const Liczba*>(&arg1)->getWartosc(), 1.0 / stopien)));
-                
             }
         }
     }
