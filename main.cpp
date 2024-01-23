@@ -14,7 +14,7 @@ class Skladnik {
 public:
 //wirtualny destruktor, zabezpiecznie przed wyciekem pamięci 
   virtual ~Skladnik() {}
-//wirtualne abstrakcujne metody
+//wirtualne abstrakcyjne metody
   virtual void wyswietl() const = 0;
 
   virtual double getWartosc() const = 0;
